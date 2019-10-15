@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 	int max = MAX_NUMBER;
 	char inChar;
 	
-	while(max != min)
+	while(min != max && (max - min) >= 1)
 	{
 		guess = (min + max)/2;
 		printf("%i. Is your number greater than %i? (y/n)", count, guess);
