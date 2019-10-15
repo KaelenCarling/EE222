@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include "collatz_fill.h"
 
+/* coded by kaelen carling and max weiss */
+
 //open the collatz file and fill an array with the contents
 bool collatz_fill(int array[])
 {
@@ -34,40 +36,53 @@ bool collatz_fill(int array[])
 	return true;
 }
 
+// finds the max collatz iterations in the file
 int collatz_max(int array[])
 {
-	int i=0;
+	int index=0;
 	int max=0;
-	for(i=0;i<MAX_NUMBER;i++)
+	
+	// loops through the array finding the max and setting max equal to it
+	for(index=0;index<MAX_NUMBER;index++)
 	{
-		if(array[i]>max)
+		if(array[index]>max)
 		{
-			max= array[i];
+			max= array[index];
 		}
 	}
+	
 	return max;
 }
+
+// averages the collatz array
 float collatz_average(int array[])
 {
-	int i=0;
+	int index=0;
 	float average=0;
 	
-	for(i=0; i<MAX_NUMBER;i++)
+	// loops through the array and sums up the total values in the array
+	for(index=0; index<MAX_NUMBER;index++)
 	{
-		average = average+array[i];
+		average = average+array[index];
 	}
+	
+	// divdes the total sum of the array by the amount of elements in it to find the average
 	average=average/MAX_NUMBER;
 	return average;
 		
 }
-int collatz_above_average(int array[])
+
+// finds the amount of indexes that are above the average amount of collatz iterations
+int collatz_greater_average(int array[])
 {
 	int count=0;
-	int i=0;
+	int index=0;
 	float average= collatz_average(array);
-	for(i=0;i<MAX_NUMBER;i++)
+	
+	//loops through array counting how many indexes are above average
+	for(index=0;index<MAX_NUMBER;index++)
 	{
-		if(array[i]>average)
+		if(array[index]>average)
 		{
 			count++;
 		}

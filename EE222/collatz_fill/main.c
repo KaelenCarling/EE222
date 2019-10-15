@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "collatz_fill.h"
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+/* coded by kaelen carling and max weiss */
 
 int main(int argc, char *argv[]) 
 {
@@ -14,9 +14,14 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;	
 	}
 	
+	//prints collatz maximum
 	printf("max = %i\n", collatz_max(array));
+	
+	// prints collatz average
 	printf("average = %f\n", collatz_average(array));
-	printf("amount above average = %i\n", collatz_above_average(array));
+	
+	// prints the amount of collatz that are above average
+	printf("amount above average = %i\n", collatz_greater_average(array));
 	
 	
 	return 0;

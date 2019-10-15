@@ -8,6 +8,6 @@
 bool collatz_fill(int array[]);
 int collatz_max(int array[]);
 float collatz_average(int array[]);
-int collatz_above_average(int array[]);
+int collatz_greater_average(int array[]);
 
 #endif

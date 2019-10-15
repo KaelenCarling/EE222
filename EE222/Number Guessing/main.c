@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #define MAX_NUMBER 1000
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+/* coded by kaelen carling and max weiss */
 
 int main(int argc, char *argv[]) {
 	
@@ -12,24 +12,32 @@ int main(int argc, char *argv[]) {
 	int max = MAX_NUMBER;
 	char inChar;
 	
-	while(min != max && (max - min) >= 1)
+	// loops until min and max are the same which means the number has been guessed
+	while((max - min) > 1 )
 	{
-		guess = (min + max)/2;
+		// stupid integer math for calculating the guess
+		guess = (min/2) + (max/2);
+		
+		//prompts user for a yes or no and stors it in a variable
 		printf("%i. Is your number greater than %i? (y/n)", count, guess);
 		scanf("%c", &inChar);
 		getchar();
-		//printf("%c", inChar);
 		
+		// if yes stores min in guess
 		if(inChar == 'y' || inChar == 'Y')
 		{
 			min = guess;
 		}
+		
+		// if no stores guess in max
 		else
 		{
 			max = guess;
 		}
 		count++;
 	}
+	
+	// outputs the guess
 	printf("Your number is: %i", guess);
 	return 0;
 }
