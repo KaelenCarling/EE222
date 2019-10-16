@@ -75,7 +75,7 @@ void collatz_copy_array(int array[], int (*array_copy)[2])
 	while(array[index] != 0)
 	{
 		array_copy[index][0]=index+1;
-		array_copy[index][1]=array[index+1];
+		array_copy[index][1]=array[index];
 		index++;
 	}
 	
@@ -88,7 +88,7 @@ void collatz_copy_array(int array[], int (*array_copy)[2])
 	array_copy[index][1]=0;
 }
 
-void selection_sort(int (*array_copy)[2])
+void collatz_selection_sort(int (*array_copy)[2])
 {
 	int array_length = 0;
 	int all_index = 0;
@@ -100,10 +100,11 @@ void selection_sort(int (*array_copy)[2])
 		array_length++;
 	}
 	
-	for(all_index = 0; all_index < array_length; all_index++)
+	for(all_index = 0; all_index < array_length -1; all_index++)
 	{
 		current_min_index = all_index;
-		for (min_index = all_index+1; min_index < array_length - 1; min_index++)
+		
+		for (min_index = all_index+1; min_index < array_length; min_index++)
 		{
 			if(array_copy[min_index][1] <= array_copy[current_min_index][1])
 			{

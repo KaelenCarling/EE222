@@ -8,7 +8,7 @@
 
 bool collatz_fill(int array[]);
 bool collatz_upload(int array[]);
-void collatz_copy_array(int array, int *array_copy[][]);
+//void collatz_copy_array(int array, int *array_copy[][]);
 void collatz_copy_array(int array[], int (*array_copy)[2]);
 
 void selection_sort(int (*array_copy)[2]);
