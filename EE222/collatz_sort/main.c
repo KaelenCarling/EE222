@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "collatz.h"
+// Program written by kaelen carling and maxwell weiss
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main() 
 {    
-	int index=0;
+
+
 	int array[MAX_NUMBER+1];
 	int array_copy[MAX_NUMBER+1][2];
 	

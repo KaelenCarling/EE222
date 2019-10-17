@@ -2,37 +2,8 @@
 #include <stdbool.h>
 #include "collatz.h"
 #include "dbg.h"
+// Program written by kaelen carling and maxwell weiss
 
-bool collatz_fill(int array[])
-{
-	
-	//file declaration
-	FILE* collatz_data;
-
-	//open file and set to read mode
-	collatz_data = fopen(COLLATZ_FILE, "r");
-	
-	if(collatz_data == NULL)
-	{
-		printf("Opening file % failed\n", COLLATZ_FILE);
-		return 0;
-	}
-	
-	int number, collatz;
-	while(fscanf(collatz_data,"%d-%d",&number,&collatz)==2)
-	{
-		//put collatz number into array
-		array[number-1]=collatz;
-		//printf("%i = %i\n",(number), array[number-1]);
-	}
-	//put in 0 past the last element of array
-	array[number]=0;
-	
-	//close file
-	fclose(collatz_data);
-	//return true
-	return true;
-}
 
 bool collatz_upload(int array[])
 {
@@ -61,7 +32,9 @@ bool collatz_upload(int array[])
 
 void collatz_print_array( int (*array_copy)[2] )
 {
-   int index = 0;    while(array_copy[index][0] != 0)
+   int index = 0;    
+   
+   while(array_copy[index][0] != 0)
    {
        printf("%d - %d\n", array_copy[index][0], array_copy[index][1]);
        index++;
@@ -72,6 +45,7 @@ void collatz_copy_array(int array[], int (*array_copy)[2])
 {
 	int index = 1;
 	
+	//copies the collatz data from the old array to the new array
 	while(array[index] != 0)
 	{
 		array_copy[index][0]=index+1;
@@ -95,29 +69,35 @@ void collatz_selection_sort(int (*array_copy)[2])
 	int current_min_index;
 	int min_index;
 	int aux;
+	
+	//finds array length
 	while(array_copy[array_length][0] != 0)
 	{
 		array_length++;
 	}
 	
+	// loops through whole array to build sorted array array
 	for(all_index = 0; all_index < array_length -1; all_index++)
 	{
 		current_min_index = all_index;
 		
-		for (min_index = all_index+1; min_index < array_length; min_index++)
+		// searches through array for the lowest value in the not sorted section of the array
+		for (min_index = all_index + 1; min_index < array_length; min_index++)
 		{
+			//checks to see if current index is less than the current minimum if it is replaces 
+			//the old current min with the new current minimum
 			if(array_copy[min_index][1] <= array_copy[current_min_index][1])
 			{
 				current_min_index = min_index;
 			}
 		}
 		
-		// swaps 
+		// swaps the original indices number / base number
 		aux = array_copy[all_index][0];
 		array_copy[all_index][0] = array_copy[current_min_index][0];
 		array_copy[current_min_index][0] = aux;
 		
-		// swaps 
+		// swaps collatz iterations of the orignal indices number / base number
 		aux = array_copy[all_index][1];
 		array_copy[all_index][1] = array_copy[current_min_index][1];
 		array_copy[current_min_index][1] = aux;
