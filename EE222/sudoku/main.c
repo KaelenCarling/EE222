@@ -6,10 +6,24 @@
 
 int main(int argc, char *argv[]) 
 {
+	srand((unsigned int) time(NULL));
 	int sudoku_board[BOARD_SIZE][BOARD_SIZE];
+	int row, col;
 	
+	// zeros out array
+	for(row = 0; row < BOARD_SIZE; row++)
+	{
+		for(col = 0; col < BOARD_SIZE; col++)
+		{
+			sudoku_board[row][col] = 0;
+		}
+	}
+	
+	show_board(sudoku_board);
 	fill_diagonal(sudoku_board);
+	show_board(sudoku_board);
 	fill_board(sudoku_board, 0, 0);
+	show_board(sudoku_board);
 	
 	return 0;
 }
