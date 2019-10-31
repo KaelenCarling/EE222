@@ -19,7 +19,6 @@ int main(int argc, char *argv[])
 		}
 	}
 	
-	show_board(sudoku_board);
 	fill_diagonal(sudoku_board);
 	show_board(sudoku_board);
 	fill_board(sudoku_board, 0, 0);

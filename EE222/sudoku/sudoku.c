@@ -26,7 +26,7 @@ bool fill_board(int(*board)[BOARD_SIZE], int row, int col)
 	//checks number 1-9 for a cell
 	for(numFill=1; numFill<=BOARD_SIZE; numFill++)
 	{
-		if(!has_conflict(board,numFill,row,col))
+		if(!has_conflict(board,numFill,col,row))
 		{
 			board[row][col]=numFill;
 			
