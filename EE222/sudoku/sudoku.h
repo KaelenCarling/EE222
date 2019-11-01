@@ -7,6 +7,8 @@
 #define BOARD_SIZE 9
 #define SUBGRID_SIZE 3
 
+// coded by kaelen carling and max weiss
+
 bool fill_board(int(*board)[BOARD_SIZE], int row, int col);
 bool is_in_row(int(*board)[BOARD_SIZE],int row, int test_number);
 bool is_in_col(int(*board)[BOARD_SIZE],int col,int test_number);

@@ -2,6 +2,7 @@
 #include "sudoku.h"
 #include <math.h>
 
+// coded by kaelen carling and max weiss
 
 bool fill_board(int(*board)[BOARD_SIZE], int row, int col)
 {
@@ -18,16 +19,19 @@ bool fill_board(int(*board)[BOARD_SIZE], int row, int col)
 		return true;
 	}
 	
+	// if its not empty it iterates to the next 
 	if(board[row][col]!=0)
 	{
 		return fill_board(board,row,col+1);
 	}
+	
 	int numFill;
 	//checks number 1-9 for a cell
 	for(numFill=1; numFill<=BOARD_SIZE; numFill++)
 	{
 		if(!has_conflict(board,numFill,col,row))
 		{
+			// fill board with number
 			board[row][col]=numFill;
 			
 			if(fill_board(board,row,col+1))
@@ -49,6 +53,7 @@ bool is_in_row(int (*board)[BOARD_SIZE],int row,int test_number)
 	int col;
 	for(col=0; col < BOARD_SIZE; col++)
 	{
+		// if there is a conflict at that indices then returns true
 		if(board[row][col]==test_number)
 		{
 			return true;
@@ -61,8 +66,10 @@ bool is_in_row(int (*board)[BOARD_SIZE],int row,int test_number)
 bool is_in_col(int (*board)[BOARD_SIZE],int col ,int test_number)
 {
 	int row;
+	// checks if row contains test number
 	for(row=0 ; row < BOARD_SIZE; row++)
 	{
+		//returns true if row does contain test number
 		if(board[row][col]==test_number)
 		{
 			return true;
@@ -74,14 +81,14 @@ bool is_in_col(int (*board)[BOARD_SIZE],int col ,int test_number)
 //checks to see if a guess creates a conflict in the subgrid
 bool is_in_subgrid(int (*board)[BOARD_SIZE],int col,int row,int test_number)
 {
-	int r,c;
-	for(r=row-(row%3);r<=(row-(row%3))+2;r++)
-	//for(r=((row%3) +2); r< row + 3; r++)
+	int rowIndex, colIndex;
+	//uses modulus to find index of subgrid and then uses a nested for loop to navigate through sub grid
+	for(rowIndex=row-(row%3);rowIndex<=(row-(row%3))+2;rowIndex++)
 	{
-		for(c=col-(col%3);c<=(col-(col%3))+2;c++)
-		//for(c=col; c < col + 3; r++)
+		for(colIndex=col-(col%3); colIndex<=(col-(col%3))+2;colIndex++)
 		{
-			if(test_number==board[r][c])
+			//returns true if test number is already in sub grid
+			if(test_number==board[rowIndex][colIndex])
 			{
 				return true;
 			}
@@ -90,21 +97,27 @@ bool is_in_subgrid(int (*board)[BOARD_SIZE],int col,int row,int test_number)
 	return false;
 }
 
+// checks with all 3 functions for conflicts
 bool has_conflict(int (*board)[BOARD_SIZE], int test_number, int col, int row)
 {
 	return is_in_subgrid(board,col,row,test_number) || is_in_col(board,col,test_number) || is_in_row(board,row,test_number);
 }
 
+// fills the diagonal sub grids
 void fill_diagonal(int (*board)[BOARD_SIZE])
 {
 	int subgrid_start, row, col, test_number;
-
+	
+	// picks the indices for the beginning of each sub grid
 	for(subgrid_start=0; subgrid_start < BOARD_SIZE; subgrid_start+=SUBGRID_SIZE)
 	{
+		
+		//fills the sub grid
 		for(row=subgrid_start;row <= subgrid_start+2; row++)
 		{
 			for(col=subgrid_start; col <= subgrid_start+2; col++)
 			{
+				//picks a random integer between 1 and 9 that isn't already in the sub grid
 				do
 				{
 					test_number = random_number(1, 9);
@@ -122,9 +135,7 @@ void remove_cells(int(*board)[BOARD_SIZE],int number_cells)
 	{
 		do
 		{
-			//choose xy coordinates randomly
-		//row = rand() % 9;
-		//col = rand() % 9;
+		//choose xy coordinates randomly
 		row = random_number(0, 8);
 		col = random_number(0, 8);
 		
