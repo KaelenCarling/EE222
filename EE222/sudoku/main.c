@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "sudoku.h"
 
-// coded by kaelen carling and max weiss
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char *argv[]) 
 {
@@ -19,11 +19,10 @@ int main(int argc, char *argv[])
 		}
 	}
 	
+	show_board(sudoku_board);
 	fill_diagonal(sudoku_board);
 	show_board(sudoku_board);
 	fill_board(sudoku_board, 0, 0);
-	show_board(sudoku_board);
-	remove_cells(sudoku_board, 20);
 	show_board(sudoku_board);
 	
 	return 0;
