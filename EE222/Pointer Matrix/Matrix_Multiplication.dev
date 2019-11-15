@@ -1,6 +1,6 @@
 [Project]
-FileName=Pointers Basic.dev
-Name=Pointers Basic
+FileName=Matrix_Multiplication.dev
+Name=Matrix_Multiplication
 Type=1
 Ver=2
 ObjFiles=
@@ -60,8 +60,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit3]
-FileName=pointer_intro.c
+[Unit2]
+FileName=matrix.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -70,8 +70,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit2]
-FileName=pointer_intro.h
+[Unit3]
+FileName=matrix.h
 CompileCpp=0
 Folder=
 Compile=1
