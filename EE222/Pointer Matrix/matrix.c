@@ -1,4 +1,5 @@
 #include "matrix.h"
+#include <stdlib.h>
 
 float* matrix_multiplication(float* left, float* right, int rows, int shared, int columns)
 {
@@ -36,13 +37,14 @@ float* matrix_multiplication(float* left, float* right, int rows, int shared, in
 		
 		for(colInd=0;colInd<columns;colInd++)
 		{
+			*(result+(rowInd*columns)+colInd) = 0;
 			
 			for(sharedInd=0;sharedInd<shared;sharedInd++)
 			{
 				//*(*(result+rowInd)+colInd)+= *(*(left+rowInd)+sharedInd)+ *(*(right+sharedInd)+colInd);
-				*(result+rowInd*columns+colInd)+= *(left+rowInd*shared+sharedInd)+ *(right+sharedInd*columns +colInd);
+				*(result+(rowInd*columns)+colInd) += *(left+(rowInd*shared)+sharedInd) * (*(right+(sharedInd*columns)+colInd));
 			}
 		}
 	}
-		return *result;
+		return result;
 }

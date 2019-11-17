@@ -12,5 +12,15 @@ int main(int argc, char *argv[])
  	float left[2][3] = {{1,2,3},{4,5,6}};
 	float right[3][4] = {{7,8,9,10},{11,12,13,14},{15,16,17,18}};
 	float* result= matrix_multiplication(&left[0][0],&right[0][0],rows,shared,columns);
+	
+	int rowInd, colInd;
+	for(rowInd = 0; rowInd < rows; rowInd++)
+	{
+		for(colInd = 0; colInd < columns; colInd++)
+		{
+			printf("%4.0f ", *(result+(rowInd*columns)+colInd));
+		}
+		printf("\n");
+	}
 	return 0;
 }
