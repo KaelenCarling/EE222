@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "matrix.h"
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+/* coded by kaelen carling and max weiss */
 
 int main(int argc, char *argv[]) 
 {
@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
 	float* result= matrix_multiplication(&left[0][0],&right[0][0],rows,shared,columns);
 	
 	int rowInd, colInd;
+	
+	//prints the result matrix
 	for(rowInd = 0; rowInd < rows; rowInd++)
 	{
 		for(colInd = 0; colInd < columns; colInd++)

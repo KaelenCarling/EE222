@@ -1,15 +1,15 @@
-# Project: Matrix_Multiplication
+# Project: StringHalves
 # Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o matrix.o
-LINKOBJ  = main.o matrix.o
+OBJ      = main.o stringHalves.o
+LINKOBJ  = main.o stringHalves.o
 LIBS     = -L"C:/ProgramData/App-V/34795ABA-299A-40BB-A675-AC89576FB7E6/BAC9C63F-D38A-4534-9B42-AD8EDF811810/Root/VFS/ProgramFilesX86/Dev-Cpp/MinGW64/lib" -L"C:/ProgramData/App-V/34795ABA-299A-40BB-A675-AC89576FB7E6/BAC9C63F-D38A-4534-9B42-AD8EDF811810/Root/VFS/ProgramFilesX86/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/ProgramData/App-V/34795ABA-299A-40BB-A675-AC89576FB7E6/BAC9C63F-D38A-4534-9B42-AD8EDF811810/Root/VFS/ProgramFilesX86/Dev-Cpp/MinGW64/include" -I"C:/ProgramData/App-V/34795ABA-299A-40BB-A675-AC89576FB7E6/BAC9C63F-D38A-4534-9B42-AD8EDF811810/Root/VFS/ProgramFilesX86/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/ProgramData/App-V/34795ABA-299A-40BB-A675-AC89576FB7E6/BAC9C63F-D38A-4534-9B42-AD8EDF811810/Root/VFS/ProgramFilesX86/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/ProgramData/App-V/34795ABA-299A-40BB-A675-AC89576FB7E6/BAC9C63F-D38A-4534-9B42-AD8EDF811810/Root/VFS/ProgramFilesX86/Dev-Cpp/MinGW64/include" -I"C:/ProgramData/App-V/34795ABA-299A-40BB-A675-AC89576FB7E6/BAC9C63F-D38A-4534-9B42-AD8EDF811810/Root/VFS/ProgramFilesX86/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/ProgramData/App-V/34795ABA-299A-40BB-A675-AC89576FB7E6/BAC9C63F-D38A-4534-9B42-AD8EDF811810/Root/VFS/ProgramFilesX86/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/ProgramData/App-V/34795ABA-299A-40BB-A675-AC89576FB7E6/BAC9C63F-D38A-4534-9B42-AD8EDF811810/Root/VFS/ProgramFilesX86/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
-BIN      = Matrix_Multiplication.exe
+BIN      = StringHalves.exe
 CXXFLAGS = $(CXXINCS) 
 CFLAGS   = $(INCS) 
 RM       = rm.exe -f
@@ -27,5 +27,5 @@ $(BIN): $(OBJ)
 main.o: main.c
 	$(CC) -c main.c -o main.o $(CFLAGS)
 
-matrix.o: matrix.c
-	$(CC) -c matrix.c -o matrix.o $(CFLAGS)
+stringHalves.o: stringHalves.c
+	$(CC) -c stringHalves.c -o stringHalves.o $(CFLAGS)

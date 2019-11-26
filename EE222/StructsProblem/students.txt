@@ -1,0 +1,5 @@
+Dieter Otte 62
+Lena Otte 42
+Sandy Loclow 43
+Sam Student 22
+John Student 34
