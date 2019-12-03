@@ -14,13 +14,13 @@ person* people_create_list(char* data_file_name)
 {
     // declare variables
     FILE* people_data;
-    person* people, *person_last, *person_next;
+    person* head, *person_last, *person_next;
 
     // set the beginning of the list to NULL and the last person to the beginning of the list
     // ...
     
-    people = NULL;
-    person_last = people;
+    head = NULL;
+    person_last = head;
     
     person_last->next = person_next;
     person_last = person_next;
@@ -29,8 +29,8 @@ person* people_create_list(char* data_file_name)
     
     // provide space for the next persons' structure
     // ...
-    person_next = (struct person*) malloc(sizeof(struct person));
-    
+    //struct person *person_next = malloc(sizeof(struct person));
+    person_next=(struct person* )malloc(sizeOf( struct person));
     // open the data file
     probe(people_data = fopen(data_file_name,"r"), "error opening file");
     
@@ -41,9 +41,9 @@ person* people_create_list(char* data_file_name)
         // there is a first record, so set first/last person to next person
         // also set the pointer to the next person to NULL
         // ...
-        person_next->next = person_last;
-        
-        
+        head = person_next;
+		person_last = person_next->next;
+        person_next = NULL;
     }
     else
     {
@@ -55,15 +55,22 @@ person* people_create_list(char* data_file_name)
     
     // create space for the next person
     // ...
-        
+    //struct person_next = (struct person*) malloc(sizeof(struct person));
+    
     // keep reading records until there is nothing to read any more
-    while (fscanf(...))
+    while (fscanf(people_data, "%s %s %d", person_next->first_name, person_next->last_name, person_next->age) == 3)
     {
         // we successfully read one record:
         // - update the 'next' pointer of the last person to be the next person
         // - set the pointer to last person to the next person (which is now the new last)
         // - update the next pointer of the new last person to point to NULL
         // ...
+        
+        person_last->next = person_next;
+        *person_last = *person_next;
+        
+        
+        
         
         // provide space for the new next person
         // ...
@@ -73,7 +80,7 @@ person* people_create_list(char* data_file_name)
     free(person_next);
     fclose(people_data);
 
-    return people;
+    return head;
     
 error:
     // free any resources and return
@@ -100,10 +107,15 @@ float people_average_age(person* people)
         // update pointer to the person that we will look at next
         // ...
         
+        number_persons++;
+        age_total = age_total + people->age;
+        people = people->next;
+        
     }
 
     // compute and return age average
     // ...
+    return age_total/number_persons;
 }
 
 
@@ -120,9 +132,14 @@ void people_print_age_above_average(person* people)
     {
         // compare age of this person with average age and possibly print name
         // ...
+        if(people->age > average_age)
+        {
+        	printf("%s %s\n", &people->first_name, &people->last_name);
+		}
         
         // update pointer to the person that we will look at next
         // ...
+        people = people->next;
     }
 }
 
